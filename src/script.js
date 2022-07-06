@@ -61,11 +61,39 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    if(sizes.height/sizes.width > imageAspect){
+        a1 = sizes.height / sizes.width * imageAspect
+    }else{
+        a2 = sizes.height / sizes.width * imageAspect
+    }
+    planeMaterial.uniforms.resolution.value.x = sizes.width
+    planeMaterial.uniforms.resolution.value.y = sizes.height
+    planeMaterial.uniforms.resolution.value.z = a1
+    planeMaterial.uniforms.resolution.value.w = a2
 })
+
+planeMaterial.uniforms.resolution.value.x = sizes.width
+planeMaterial.uniforms.resolution.value.y = sizes.height
+planeMaterial.uniforms.resolution.value.z = a1
+planeMaterial.uniforms.resolution.value.w = a2
+
 
 /**
  * Camera
  */
+
+//  const frustumSize = 1;
+//  const aspect = sizes.width / sizes.height;
+//  const camera = new THREE.OrthographicCamera(
+//      frustumSize * aspect / -2,
+//      frustumSize * aspect / 2,
+//      frustumSize / 2,
+//      frustumSize / -2,
+//      -1000,
+//      1000
+//  )
+
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.set(0,0,3)

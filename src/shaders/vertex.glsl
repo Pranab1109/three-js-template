@@ -1,10 +1,6 @@
 uniform float uTime;
 varying vec2 vUv;
 
-// Classic Perlin 3D Noise 
-// by Stefan Gustavson
-//
-
 void main()
 {
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
